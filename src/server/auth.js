@@ -52,7 +52,7 @@ passport.use(
 
 options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 
-options.secretOrKey = 'YOURMOMISWEIRD';
+options.secretOrKey = process.env.secret;
 
 passport.use(
   new JwtStrategy(
