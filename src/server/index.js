@@ -1,4 +1,5 @@
 const Koa = require('koa');
+const cors = require('@koa/cors');
 const bodyParser = require('koa-bodyparser');
 const session = require('koa-session');
 const passport = require('koa-passport');
@@ -9,10 +10,17 @@ const movieRoutes = require('./routes/movies');
 const authRoutes = require('./routes/auth');
 
 const app = new Koa();
+
+// app.use(cors({
+//   origin: '*',
+//   credentials: true
+// }));
+
 const PORT = process.env.PORT || 1337;
 
 // sessions
-app.keys = ['YOURMOMISKINDAWEIRD'];
+console.log(process.env.secret)
+app.keys = [process.env.secret];
 app.use(session({
   store: new RedisStore()
 }, app));

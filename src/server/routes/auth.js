@@ -86,7 +86,7 @@ router
             expires: Date.now() + 300000
           }
           ctx.login(payload, { session: false });
-          const token = jwt.sign(JSON.stringify(payload), 'YOURMOMISWEIRD');
+          const token = jwt.sign(JSON.stringify(payload), process.env.secret);
           ctx.body = { status: 'success', login: true, token }
           // ctx.body = { status: 'success', loggedIn: true };
         } else {
