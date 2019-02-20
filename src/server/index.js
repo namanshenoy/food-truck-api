@@ -8,6 +8,7 @@ const RedisStore = require('koa-redis');
 const indexRoutes = require('./routes/index');
 const movieRoutes = require('./routes/movies');
 const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user');
 
 const app = new Koa();
 
@@ -37,6 +38,7 @@ app.use(passport.session());
 app.use(indexRoutes.routes());
 app.use(movieRoutes.routes());
 app.use(authRoutes.routes());
+app.use(userRoutes.routes());
 
 const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server listening on port: ${PORT}`);

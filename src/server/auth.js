@@ -59,7 +59,7 @@ passport.use(
     options,
     (jwt_payload, done) => {
       if (Date.now() > jwt_payload.expires) {
-        return done('jwt expired')
+        return done(null, null)
       }
       console.log('Authenticated!')
       console.log(jwt_payload)

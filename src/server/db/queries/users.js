@@ -14,13 +14,16 @@ function addUser (user) {
 
 function getUser (username) {
   return knex('users')
-  .select('*')
+  .select('username', 'first_name', 'last_name', 'email')
   .where({ username });
 }
 
 function updateUser (username, data) {
   if (data.username) {
     delete data['username'];
+  }
+  if (data.password) {
+    delete data['password'];
   }
   return knex('users')
     .where({ username })
